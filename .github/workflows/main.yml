@@ -7,6 +7,9 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, edge] # Tuyệt chiêu chẻ đôi luồng chạy ở dòng này
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -14,4 +17,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          browser: chrome
+          browser: ${{ matrix.browser }}
