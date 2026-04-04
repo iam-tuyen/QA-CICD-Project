@@ -1,16 +1,26 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  reporter: 'cypress-mochawesome-reporter',
-  reporterOptions: {
-    charts: true, // Bật biểu đồ
-    reportPageTitle: 'Báo Cáo Test Login',
-    embeddedScreenshots: true,
-    inlineAssets: true // Lệnh phép thuật: Ép gom hết biểu đồ vào 1 file HTML duy nhất
-  },
   e2e: {
+    baseUrl: "https://www.saucedemo.com",
+    specPattern: "cypress/e2e/**/*.cy.js",
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-    },
+      require("cypress-mochawesome-reporter/plugin")(on);
+      return config;
+    }
   },
+
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: "Login Test Report",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false
+  },
+
+  screenshotsFolder: "cypress/screenshots",
+  videosFolder: "cypress/videos",
+  video: true,
+  trashAssetsBeforeRuns: true
 });
