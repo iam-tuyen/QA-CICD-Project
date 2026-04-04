@@ -1,17 +1,26 @@
 {
   "name": "qa-cicd-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "QA Automation Login Testing with Cypress and GitHub Actions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "cypress run",
+    "test:chrome": "cypress run --browser chrome",
+    "test:edge": "cypress run --browser edge"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "qa",
+    "automation-testing",
+    "cypress",
+    "github-actions",
+    "ci-cd"
+  ],
+  "author": "Thanh Tuyen",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
-    "cypress": "^15.13.0",
+    "cypress": "^15.0.0",
     "cypress-mochawesome-reporter": "^4.0.2"
   }
 }
