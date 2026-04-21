@@ -1,9 +1,6 @@
 describe("Inventory - SauceDemo", () => {
   beforeEach(() => {
-    cy.visit("/");
-    cy.fixture("loginData").then((data) => {
-      cy.login(data.validUser.username, data.validUser.password);
-    });
+    cy.loginAsStandardUser();
   });
 
   it("TC07: Hiển thị danh sách sản phẩm sau khi login", () => {
@@ -37,6 +34,6 @@ describe("Inventory - SauceDemo", () => {
   it("TC10: Đăng xuất khỏi hệ thống", () => {
     cy.get("#react-burger-menu-btn").click();
     cy.get("#logout_sidebar_link", { timeout: 10000 }).click();
-    cy.url().should("eq", "https://www.saucedemo.com/");
+    cy.location("pathname").should("eq", "/");
   });
 });

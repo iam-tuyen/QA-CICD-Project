@@ -1,6 +1,8 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  allowCypressEnv: false,
+
   e2e: {
     baseUrl: "https://www.saucedemo.com",
     specPattern: "cypress/e2e/**/*.cy.js",
@@ -20,7 +22,7 @@ module.exports = defineConfig({
   },
 
   retries: {
-    runMode: 2,
+    runMode: 1,
     openMode: 0
   },
 

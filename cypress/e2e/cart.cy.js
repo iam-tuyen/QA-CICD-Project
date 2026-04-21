@@ -1,9 +1,6 @@
 describe("Cart - SauceDemo", () => {
   beforeEach(() => {
-    cy.visit("/");
-    cy.fixture("loginData").then((data) => {
-      cy.login(data.validUser.username, data.validUser.password);
-    });
+    cy.loginAsStandardUser();
   });
 
   it("TC11: Thêm 1 sản phẩm vào giỏ hàng", () => {

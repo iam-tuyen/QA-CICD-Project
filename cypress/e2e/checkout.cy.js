@@ -1,9 +1,6 @@
 describe("Checkout - SauceDemo", () => {
   beforeEach(() => {
-    cy.visit("/");
-    cy.fixture("loginData").then((data) => {
-      cy.login(data.validUser.username, data.validUser.password);
-    });
+    cy.loginAsStandardUser();
 
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     cy.get(".shopping_cart_link").click();
