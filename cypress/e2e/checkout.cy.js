@@ -10,7 +10,7 @@ describe("Checkout - SauceDemo", () => {
     cy.get('[data-test="checkout"]').click();
   });
 
-  it("TC13: Checkout thất bại khi thiếu First Name", () => {
+  it("TC15: Checkout thất bại khi thiếu First Name", () => {
     cy.get('[data-test="lastName"]').type("Nguyen");
     cy.get('[data-test="postalCode"]').type("700000");
     cy.get('[data-test="continue"]').click();
@@ -20,7 +20,27 @@ describe("Checkout - SauceDemo", () => {
       .and("contain", "First Name is required");
   });
 
-  it("TC14: Checkout thành công với dữ liệu hợp lệ", () => {
+  it("TC16: Checkout thất bại khi thiếu Last Name", () => {
+    cy.get('[data-test="firstName"]').type("Thanh");
+    cy.get('[data-test="postalCode"]').type("700000");
+    cy.get('[data-test="continue"]').click();
+
+    cy.get('[data-test="error"]')
+      .should("be.visible")
+      .and("contain", "Last Name is required");
+  });
+
+  it("TC17: Checkout thất bại khi thiếu Postal Code", () => {
+    cy.get('[data-test="firstName"]').type("Thanh");
+    cy.get('[data-test="lastName"]').type("Tuyen");
+    cy.get('[data-test="continue"]').click();
+
+    cy.get('[data-test="error"]')
+      .should("be.visible")
+      .and("contain", "Postal Code is required");
+  });
+
+  it("TC18: Checkout thành công với dữ liệu hợp lệ", () => {
     cy.get('[data-test="firstName"]').type("Thanh");
     cy.get('[data-test="lastName"]').type("Tuyen");
     cy.get('[data-test="postalCode"]').type("700000");
