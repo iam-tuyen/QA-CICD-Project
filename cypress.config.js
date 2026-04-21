@@ -13,12 +13,18 @@ module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     charts: true,
-    reportPageTitle: "Login Test Report",
+    reportPageTitle: "QA-CICD Test Report",
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false
   },
 
+  retries: {
+    runMode: 2,
+    openMode: 0
+  },
+
+  screenshotOnRunFailure: true,
   screenshotsFolder: "cypress/screenshots",
   videosFolder: "cypress/videos",
   video: true,
