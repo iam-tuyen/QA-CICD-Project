@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "QA Automation Login Testing with Cypress and GitHub Actions",
   "main": "index.js",
-  "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "test": "cypress run",
-    "test:chrome": "cypress run --browser chrome"
-  },
+"scripts": {
+  "cy:open": "cypress open",
+  "cy:run": "cypress run",
+  "test": "cypress run",
+  "test:chrome": "cypress run --browser chrome",
+  "test:edge": "cypress run --browser edge",
+  "test:headed": "cypress run --headed --browser chrome"
+},
   "keywords": [
     "qa",
     "automation-testing",

@@ -24,9 +24,19 @@ describe("Inventory - SauceDemo", () => {
     });
   });
 
-  it("TC09: Đăng xuất khỏi hệ thống", () => {
+  it("TC09: Sắp xếp tên từ A đến Z", () => {
+    cy.get('[data-test="product-sort-container"]').select("az");
+
+    cy.get(".inventory_item_name").then(($names) => {
+      const values = [...$names].map((el) => el.innerText.trim());
+      const sorted = [...values].sort((a, b) => a.localeCompare(b));
+      expect(values).to.deep.equal(sorted);
+    });
+  });
+
+  it("TC10: Đăng xuất khỏi hệ thống", () => {
     cy.get("#react-burger-menu-btn").click();
     cy.get("#logout_sidebar_link", { timeout: 10000 }).click();
-    cy.url().should("include", "saucedemo.com");
+    cy.url().should("eq", "https://www.saucedemo.com/");
   });
 });

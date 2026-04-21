@@ -1,20 +1,32 @@
-# Dự án Tích hợp Kiểm thử Tự động & CI/CD (Cypress + GitHub Actions)
+# QA-CICD Project - Cypress + GitHub Actions
 
-## Tổng quan Dự án
-Dự án sử dụng Cypress để xây dựng bộ kiểm thử tự động E2E cho website SauceDemo.  
-Hệ thống được tích hợp với GitHub Actions để tự động chạy test khi push code hoặc tạo pull request.
+## 1. Tổng quan dự án
+Đây là dự án thực hành kiểm thử tự động E2E cho website SauceDemo bằng Cypress, kết hợp GitHub Actions để xây dựng quy trình CI/CD tự động.
 
-## Điểm nổi bật
-- Kiểm thử tự động E2E với Cypress
-- Áp dụng custom command (`cy.login()`)
-- Áp dụng fixture để quản lý dữ liệu test
-- Bật retries để giảm flaky test trên CI
-- CI/CD với GitHub Actions
-- Chạy kiểm thử đa trình duyệt bằng matrix strategy
-- Upload screenshots, videos và reports sau mỗi lần chạy
+Mục tiêu của dự án là:
+- Tự động hóa kiểm thử các chức năng quan trọng
+- Tích hợp kiểm thử vào quy trình CI/CD
+- Tạo report và video làm minh chứng
+- Thực hành theo hướng QA / Tester / Automation Testing
 
-## Phạm vi kiểm thử
-### 1. Login
+## 2. Công nghệ sử dụng
+- Cypress
+- JavaScript
+- GitHub Actions
+- Mochawesome Reporter
+- Git / GitHub
+
+## 3. Kiến trúc / mô hình hoạt động
+Quy trình hoạt động của dự án:
+1. Lập trình viên cập nhật code và push lên GitHub
+2. GitHub Actions tự động kích hoạt workflow
+3. Workflow cài đặt dependency bằng npm
+4. Cypress tự động chạy test
+5. Hệ thống sinh report, screenshots, videos
+6. Kết quả được lưu lại dưới dạng artifacts trên GitHub Actions
+
+## 4. Phạm vi kiểm thử
+### Login
 - TC01: Login thành công
 - TC02: Sai mật khẩu
 - TC03: Sai username
@@ -22,21 +34,33 @@ Hệ thống được tích hợp với GitHub Actions để tự động chạy
 - TC05: Bỏ trống password
 - TC06: Tài khoản bị khóa
 
-### 2. Inventory
+### Inventory
 - TC07: Hiển thị danh sách sản phẩm
 - TC08: Sắp xếp giá từ thấp đến cao
-- TC09: Đăng xuất hệ thống
+- TC09: Sắp xếp tên từ A đến Z
+- TC10: Đăng xuất hệ thống
 
-### 3. Cart
-- TC10: Thêm 1 sản phẩm vào giỏ
-- TC11: Xóa sản phẩm khỏi giỏ
-- TC12: Thêm 2 sản phẩm vào giỏ
+### Cart
+- TC11: Thêm 1 sản phẩm vào giỏ hàng
+- TC12: Xóa sản phẩm khỏi giỏ hàng
+- TC13: Thêm 2 sản phẩm vào giỏ hàng
+- TC14: Xóa sản phẩm ngay tại trang inventory
 
-### 4. Checkout
-- TC13: Checkout thất bại khi thiếu First Name
-- TC14: Checkout thành công với dữ liệu hợp lệ
+### Checkout
+- TC15: Thiếu First Name
+- TC16: Thiếu Last Name
+- TC17: Thiếu Postal Code
+- TC18: Checkout thành công
 
-## Cấu trúc thư mục
+## 5. CI/CD Pipeline
+Workflow được cấu hình để:
+- chạy khi push vào `main`
+- chạy khi tạo pull request vào `main`
+- hỗ trợ chạy thủ công
+- chạy test trên Chrome và Edge
+- upload reports và videos làm artifacts
+
+## 6. Cấu trúc thư mục
 ```text
 .github/workflows/main.yml
 cypress/e2e/
@@ -44,3 +68,4 @@ cypress/fixtures/
 cypress/support/
 cypress.config.js
 package.json
+README.md

@@ -6,13 +6,13 @@ describe("Cart - SauceDemo", () => {
     });
   });
 
-  it("TC10: Thêm 1 sản phẩm vào giỏ hàng", () => {
+  it("TC11: Thêm 1 sản phẩm vào giỏ hàng", () => {
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     cy.get(".shopping_cart_badge").should("contain", "1");
     cy.get('[data-test="remove-sauce-labs-backpack"]').should("be.visible");
   });
 
-  it("TC11: Xóa sản phẩm khỏi giỏ hàng", () => {
+  it("TC12: Xóa sản phẩm khỏi giỏ hàng", () => {
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     cy.get(".shopping_cart_link").click();
 
@@ -21,9 +21,15 @@ describe("Cart - SauceDemo", () => {
     cy.get(".cart_item").should("have.length", 0);
   });
 
-  it("TC12: Thêm 2 sản phẩm vào giỏ hàng", () => {
+  it("TC13: Thêm 2 sản phẩm vào giỏ hàng", () => {
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
     cy.get(".shopping_cart_badge").should("contain", "2");
+  });
+
+  it("TC14: Xóa sản phẩm ngay tại trang inventory", () => {
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+    cy.get('[data-test="remove-sauce-labs-backpack"]').click();
+    cy.get(".shopping_cart_badge").should("not.exist");
   });
 });
