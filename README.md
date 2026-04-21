@@ -1,32 +1,46 @@
-# 🚀 Dự án Tích hợp Kiểm thử Tự động & CI/CD (Cypress + GitHub Actions)
+# Dự án Tích hợp Kiểm thử Tự động & CI/CD (Cypress + GitHub Actions)
 
-![CI Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Cypress](https://img.shields.io/badge/Cypress-E2E_Testing-blue)
-![Report](https://img.shields.io/badge/Report-Mochawesome-orange)
+## Tổng quan Dự án
+Dự án sử dụng Cypress để xây dựng bộ kiểm thử tự động E2E cho website SauceDemo.  
+Hệ thống được tích hợp với GitHub Actions để tự động chạy test khi push code hoặc tạo pull request.
 
-## 📌 Tổng quan Dự án
+## Điểm nổi bật
+- Kiểm thử tự động E2E với Cypress
+- Áp dụng custom command (`cy.login()`)
+- Áp dụng fixture để quản lý dữ liệu test
+- Bật retries để giảm flaky test trên CI
+- CI/CD với GitHub Actions
+- Chạy kiểm thử đa trình duyệt bằng matrix strategy
+- Upload screenshots, videos và reports sau mỗi lần chạy
 
-Dự án ứng dụng Cypress để xây dựng kịch bản kiểm thử tự động (E2E Testing) cho chức năng Đăng nhập. Tích hợp trực tiếp vào luồng CI/CD của GitHub Actions để tự động thực thi kiểm thử mỗi khi có thay đổi mã nguồn.
+## Phạm vi kiểm thử
+### 1. Login
+- TC01: Login thành công
+- TC02: Sai mật khẩu
+- TC03: Sai username
+- TC04: Bỏ trống username
+- TC05: Bỏ trống password
+- TC06: Tài khoản bị khóa
 
-## 🌟 Điểm nổi bật (Nâng cao)
+### 2. Inventory
+- TC07: Hiển thị danh sách sản phẩm
+- TC08: Sắp xếp giá từ thấp đến cao
+- TC09: Đăng xuất hệ thống
 
-- **Kiểm thử Đa trình duyệt (Cross-browser):** Sử dụng Matrix Strategy trong CI/CD để chạy kịch bản song song trên cả `Chrome` và `Edge`.
-- **Báo cáo Trực quan (HTML Report):** Tích hợp thư viện `cypress-mochawesome-reporter` để tự động trích xuất báo cáo kiểm thử dạng biểu đồ.
+### 3. Cart
+- TC10: Thêm 1 sản phẩm vào giỏ
+- TC11: Xóa sản phẩm khỏi giỏ
+- TC12: Thêm 2 sản phẩm vào giỏ
 
-## 🧪 Kịch bản Kiểm thử (SUT: saucedemo.com)
+### 4. Checkout
+- TC13: Checkout thất bại khi thiếu First Name
+- TC14: Checkout thành công với dữ liệu hợp lệ
 
-Bao phủ 6 trường hợp kiểm thử (Test Cases) cho chức năng Login:
-
-- `TC01`: Đăng nhập thành công với tài khoản và mật khẩu hợp lệ.
-- `TC02`: Đăng nhập thất bại do nhập sai Mật khẩu.
-- `TC03`: Đăng nhập thất bại do nhập sai Tên đăng nhập.
-- `TC04`: Đăng nhập thất bại do bỏ trống Tên đăng nhập.
-- `TC05`: Đăng nhập thất bại do bỏ trống Mật khẩu.
-- `TC06`: Đăng nhập thất bại do tài khoản đã bị khóa.
-
-## 💻 Hướng dẫn chạy môi trường Local
-
-1. Cài đặt các thư viện phụ thuộc:
-   `npm install`
-2. Thực thi kiểm thử và xuất báo cáo HTML:
-   `npx cypress run`
+## Cấu trúc thư mục
+```text
+.github/workflows/main.yml
+cypress/e2e/
+cypress/fixtures/
+cypress/support/
+cypress.config.js
+package.json
