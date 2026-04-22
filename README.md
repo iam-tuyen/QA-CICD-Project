@@ -19,7 +19,73 @@ Mục tiêu của dự án là:
 - Mochawesome Reporter
 - Git / GitHub
 
-## 3. Kiến trúc / mô hình hoạt động
+## 3. Hướng dẫn cài đặt và chạy dự án
+
+### Yêu cầu trước khi chạy
+
+- Cài đặt Node.js phiên bản LTS
+- Cài đặt Git
+- Có trình duyệt Chrome hoặc Edge
+
+### Các bước cài đặt
+
+1. Clone repository về máy:
+
+```bash
+git clone https://github.com/iam-tuyen/QA-CICD-Project.git
+```
+
+2. Di chuyển vào thư mục dự án:
+
+```bash
+cd QA-CICD-Project
+```
+
+3. Cài đặt dependency:
+
+```bash
+npm install
+```
+
+### Các cách chạy dự án
+
+- Chạy toàn bộ test:
+
+```bash
+npm test
+```
+
+- Chạy smoke test:
+
+```bash
+npm run test:smoke
+```
+
+- Chạy regression test:
+
+```bash
+npm run test:regression
+```
+
+- Chạy test trên Chrome:
+
+```bash
+npm run test:chrome
+```
+
+- Chạy test trên Edge:
+
+```bash
+npm run test:edge
+```
+
+- Mở Cypress giao diện tương tác:
+
+```bash
+npm run cy:open
+```
+
+## 4. Kiến trúc / mô hình hoạt động
 
 Quy trình hoạt động của dự án:
 
@@ -30,7 +96,7 @@ Quy trình hoạt động của dự án:
 5. Hệ thống sinh report, screenshots, videos
 6. Kết quả được lưu lại dưới dạng artifacts trên GitHub Actions
 
-## 4. Phạm vi kiểm thử
+## 5. Phạm vi kiểm thử
 
 ### Login
 
@@ -62,7 +128,7 @@ Quy trình hoạt động của dự án:
 - TC17: Thiếu Postal Code
 - TC18: Checkout thành công
 
-## 5. CI/CD Pipeline
+## 6. CI/CD Pipeline
 
 Workflow được cấu hình để:
 
@@ -71,7 +137,7 @@ Workflow được cấu hình để:
 - hỗ trợ chạy thủ công
 - upload reports và videos làm artifacts
 
-## 6. Scripts chính
+## 7. Scripts chính
 
 - `npm test`: chạy toàn bộ E2E suite
 - `npm run test:smoke`: chạy bộ smoke (login + inventory)
@@ -79,7 +145,7 @@ Workflow được cấu hình để:
 - `npm run test:chrome`: chạy test trên Chrome
 - `npm run test:edge`: chạy test trên Edge
 
-## 7. Điểm nâng cấp đã áp dụng
+## 8. Điểm nâng cấp đã áp dụng
 
 - Refactor reusable login command để giảm lặp code giữa các test suite
 - Tách test data checkout vào fixture để test case sạch và dễ maintain hơn
@@ -87,7 +153,7 @@ Workflow được cấu hình để:
 - Tối ưu retry `runMode` để giảm việc che giấu flaky test
 - Tách pipeline Smoke/Regression để phản ánh tư duy QA thực tế trong CI/CD
 
-## 8. Cấu trúc thư mục
+## 9. Cấu trúc thư mục
 
 ```text
 .github/workflows/main.yml
@@ -99,7 +165,7 @@ package.json
 README.md
 ```
 
-## 9. Lý do chọn công nghệ này cho định hướng cá nhân
+## 10. Lý do chọn công nghệ này cho định hướng cá nhân
 
 Tôi chọn Cypress, JavaScript và GitHub Actions vì đây là bộ công nghệ phù hợp với định hướng trở thành một QA Automation Engineer có khả năng làm việc trong môi trường CI/CD thực tế. Cypress giúp tôi thực hành kiểm thử E2E theo đúng luồng người dùng thật, từ đăng nhập, thao tác sản phẩm, giỏ hàng đến checkout. Điều này rất quan trọng vì một tester không chỉ cần biết kiểm tra giao diện, mà còn phải hiểu cách xây dựng các kịch bản kiểm thử mô phỏng hành vi thực tế của người dùng.
 
