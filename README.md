@@ -82,6 +82,7 @@ Workflow được cấu hình để:
 ## 7. Điểm nâng cấp đã áp dụng
 
 - Refactor reusable login command để giảm lặp code giữa các test suite
+- Tách test data checkout vào fixture để test case sạch và dễ maintain hơn
 - Chuẩn hóa assertion logout theo `pathname` để tránh phụ thuộc URL tuyệt đối
 - Tối ưu retry `runMode` để giảm việc che giấu flaky test
 - Tách pipeline Smoke/Regression để phản ánh tư duy QA thực tế trong CI/CD
@@ -97,3 +98,13 @@ cypress.config.js
 package.json
 README.md
 ```
+
+## 9. Lý do chọn công nghệ này cho định hướng cá nhân
+
+Tôi chọn Cypress, JavaScript và GitHub Actions vì đây là bộ công nghệ phù hợp với định hướng trở thành một QA Automation Engineer có khả năng làm việc trong môi trường CI/CD thực tế. Cypress giúp tôi thực hành kiểm thử E2E theo đúng luồng người dùng thật, từ đăng nhập, thao tác sản phẩm, giỏ hàng đến checkout. Điều này rất quan trọng vì một tester không chỉ cần biết kiểm tra giao diện, mà còn phải hiểu cách xây dựng các kịch bản kiểm thử mô phỏng hành vi thực tế của người dùng.
+
+JavaScript được chọn vì đây là ngôn ngữ phổ biến, dễ tích hợp với Cypress và cũng là nền tảng tốt để phát triển thêm các kỹ năng automation khác trong tương lai. Khi làm việc với JavaScript, tôi có thể học thêm cách tổ chức code, tái sử dụng hàm, quản lý test data và viết các custom command để làm cho bộ test gọn hơn, rõ hơn và dễ bảo trì hơn.
+
+GitHub Actions là công nghệ giúp tôi hiểu cách kiểm thử được tích hợp vào quy trình phát triển phần mềm. Thay vì chỉ chạy test thủ công trên máy cá nhân, tôi có thể để workflow tự động chạy mỗi khi có thay đổi code. Điều này giúp tôi tiếp cận tư duy CI/CD thực tế, đồng thời hiểu rõ hơn vai trò của tester trong quy trình phát triển sản phẩm phần mềm hiện đại.
+
+Ngoài ra, dự án này còn giúp tôi rèn luyện các kỹ năng quan trọng của một tester như đọc yêu cầu, xây dựng test case, phân loại luồng kiểm thử, quản lý dữ liệu test, và viết báo cáo minh chứng bằng screenshot, video, artifact. Đây là những kỹ năng cần thiết nếu tôi muốn theo hướng QA Automation lâu dài. Vì vậy, việc chọn bộ công nghệ này không chỉ phù hợp với bài tập hiện tại mà còn phù hợp với định hướng nghề nghiệp của tôi sau này.

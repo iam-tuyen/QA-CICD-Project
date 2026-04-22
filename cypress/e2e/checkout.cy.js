@@ -1,6 +1,12 @@
 describe("Checkout - SauceDemo", () => {
+  let checkoutData;
+
   beforeEach(() => {
     cy.loginAsStandardUser();
+
+    cy.fixture("checkoutData").then((data) => {
+      checkoutData = data;
+    });
 
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     cy.get(".shopping_cart_link").click();
@@ -8,8 +14,8 @@ describe("Checkout - SauceDemo", () => {
   });
 
   it("TC15: Checkout thất bại khi thiếu First Name", () => {
-    cy.get('[data-test="lastName"]').type("Nguyen");
-    cy.get('[data-test="postalCode"]').type("700000");
+    cy.get('[data-test="lastName"]').type(checkoutData.partialCustomer.lastName);
+    cy.get('[data-test="postalCode"]').type(checkoutData.partialCustomer.postalCode);
     cy.get('[data-test="continue"]').click();
 
     cy.get('[data-test="error"]')
@@ -18,8 +24,8 @@ describe("Checkout - SauceDemo", () => {
   });
 
   it("TC16: Checkout thất bại khi thiếu Last Name", () => {
-    cy.get('[data-test="firstName"]').type("Thanh");
-    cy.get('[data-test="postalCode"]').type("700000");
+    cy.get('[data-test="firstName"]').type(checkoutData.validCustomer.firstName);
+    cy.get('[data-test="postalCode"]').type(checkoutData.validCustomer.postalCode);
     cy.get('[data-test="continue"]').click();
 
     cy.get('[data-test="error"]')
@@ -28,8 +34,8 @@ describe("Checkout - SauceDemo", () => {
   });
 
   it("TC17: Checkout thất bại khi thiếu Postal Code", () => {
-    cy.get('[data-test="firstName"]').type("Thanh");
-    cy.get('[data-test="lastName"]').type("Tuyen");
+    cy.get('[data-test="firstName"]').type(checkoutData.validCustomer.firstName);
+    cy.get('[data-test="lastName"]').type(checkoutData.validCustomer.lastName);
     cy.get('[data-test="continue"]').click();
 
     cy.get('[data-test="error"]')
@@ -38,9 +44,9 @@ describe("Checkout - SauceDemo", () => {
   });
 
   it("TC18: Checkout thành công với dữ liệu hợp lệ", () => {
-    cy.get('[data-test="firstName"]').type("Thanh");
-    cy.get('[data-test="lastName"]').type("Tuyen");
-    cy.get('[data-test="postalCode"]').type("700000");
+    cy.get('[data-test="firstName"]').type(checkoutData.validCustomer.firstName);
+    cy.get('[data-test="lastName"]').type(checkoutData.validCustomer.lastName);
+    cy.get('[data-test="postalCode"]').type(checkoutData.validCustomer.postalCode);
     cy.get('[data-test="continue"]').click();
 
     cy.url().should("include", "checkout-step-two.html");

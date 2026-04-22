@@ -1,0 +1,12 @@
+{
+  "validCustomer": {
+    "firstName": "Thanh",
+    "lastName": "Tuyen",
+    "postalCode": "700000"
+  },
+  "partialCustomer": {
+    "firstName": "Thanh",
+    "lastName": "Nguyen",
+    "postalCode": "700000"
+  }
+}
